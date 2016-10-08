@@ -1,6 +1,6 @@
 require "city-state/version"
 
-module CS
+module CityState
   # CS constants
   MAXMIND_ZIPPED_URL = "http://geolite.maxmind.com/download/geoip/database/GeoLite2-City-CSV.zip"
   FILES_FOLDER = File.expand_path('../db', __FILE__)
@@ -113,7 +113,7 @@ module CS
     # we don't have used this method yet: discover by the file extension
     fn = Dir[File.join(FILES_FOLDER, "cities.*")].last
     @current_country = fn.blank? ? nil : fn.split(".").last
-    
+
     # there's no files: we'll install and use :US
     if @current_country.blank?
       @current_country = :US
@@ -121,7 +121,7 @@ module CS
 
     # we find a file: normalize the extension to something like :US
     else
-      @current_country = @current_country.to_s.upcase.to_sym    
+      @current_country = @current_country.to_s.upcase.to_sym
     end
 
     @current_country
