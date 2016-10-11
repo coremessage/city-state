@@ -187,6 +187,11 @@ module CityState
     @countries
   end
 
+  # list of all cities of a given country
+  def self.all_cities(country)
+    states(country).map { |state| cities(state.first) }.flatten.uniq.sort
+  end
+
   # get is a method to simplify the use of city-state
   # get = countries, get(country) = states(country), get(country, state) = cities(state, country)
   def self.get(country = nil, state = nil)
